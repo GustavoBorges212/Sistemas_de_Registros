@@ -85,17 +85,15 @@
 const fs = require('fs');
 const path = require('path');
 
-// 1. Organizando os caminhos
 const pastaRegistros = path.join(__dirname, 'registros');
 const caminhoArquivo = path.join(pastaRegistros, 'atendimentos.txt');
 
-// 2. Garantindo que a pasta 'registros' exista (evita erro se a pasta não estiver lá)
+
 if (!fs.existsSync(pastaRegistros)) {
     fs.mkdirSync(pastaRegistros);
 }
 
-// 3. Adicionando os atendimentos (sem apagar os antigos)
-// Usamos \n no final de cada string para que fiquem em linhas separadas
+
 fs.appendFileSync(caminhoArquivo, 'Cliente: Felipe | Serviço: Driver\n');
 fs.appendFileSync(caminhoArquivo, 'Cliente: Gabriela | Serviço: Backup\n');
 fs.appendFileSync(caminhoArquivo, 'Cliente: Hugo | Serviço: Rede\n');
@@ -103,7 +101,7 @@ fs.appendFileSync(caminhoArquivo, 'Cliente: Hugo | Serviço: Rede\n');
 console.log('Registros salvos com sucesso na pasta "registros".');
 console.log('---');
 
-// 4. Lendo todo o conteúdo para exibir o histórico
+
 const historicoCompleto = fs.readFileSync(caminhoArquivo, 'utf-8');
 
 console.log('Histórico atualizado:');
